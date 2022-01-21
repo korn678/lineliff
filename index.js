@@ -6,13 +6,7 @@ import liff from '@line/liff';
 
 // Body element
 const body = document.getElementById('body');
-
-// profile element
-const pictureUrl = document.getElementById('pictureUrl');
-const userId = document.getElementById('userId');
-const statusMessage = document.getElementById('statusMessage');
-const displayName = document.getElementById('displayName');
-const email = document.getElementById('email');
+const btnSubmit = document.getElementById('submit');
 
 async function main() {
   await liff.init({ liffId: '1656821779-oVQW95Rm' });
@@ -20,19 +14,26 @@ async function main() {
     if (liff.getOS === 'ios') {
       body.style.backgroundColor = '#000000';
     }
-    if (liff.isInClient()) {
-      getUserProfile();
-    }
-    // btnShare.style.display = 'block';
   });
 }
 main();
 
-async function getUserProfile() {
-  const profile = await liff.getProfile();
-  pictureUrl.src = profile.pictureUrl;
-  userId.innerHTML = '<b>userId:</b> ' + profile.userId;
-  statusMessage.innerHTML = '<b>statusMessage:</b> ' + profile.statusMessage;
-  displayName.innerHTML = '<b>displayName:</b> ' + profile.displayName;
-  email.innerHTML = '<b>email:</b> ' + liff.getDecodedIDToken().email;
+async function Submit() {
+  const result = await liff
+    .sendMessages([
+      {
+        type: 'text',
+        text: 'ระบบกำลังดำเนินการ',
+      },
+    ])
+    .then(() => {
+      console.log('message sent');
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
 }
+
+btnSubmit.onclick = () => {
+  Submit();
+};

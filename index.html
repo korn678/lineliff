@@ -7,12 +7,64 @@
     <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
   </head>
   <body>
-    <section id="profile">
-      <img id="pictureUrl" src="https://mokmoon.com/images/ic_liff.png" />
-      <p id="userId"></p>
-      <p id="displayName"></p>
-      <p id="statusMessage"></p>
-      <p id="email"></p>
-    </section>
+    <form action="/action_page.php">
+      <h2>กรอกข้อมูลลงทะเบียนพระพร้อม</h2>
+
+      <label for="fname">ชื่อ-สกุล :</label>
+      <input type="text" id="name" name="name" required /><br /><br />
+
+      <label for="roles">ตำแหน่งปกครองของสงฆ์ :</label>
+      <select name="roles" id="roles">
+        <option value="เจ้าคณะใหญ่">เจ้าคณะใหญ่</option>
+        <option value="เจ้าคณะภาค">เจ้าคณะภาค</option>
+        <option value="รองเจ้าคณะภาค">รองเจ้าคณะภาค</option>
+        <option value="เจ้าคณะจังหวัด">เจ้าคณะจังหวัด</option>
+        <option value="รองเจ้าคณะจังหวัด">รองเจ้าคณะจังหวัด</option>
+        <option value="เจ้าคณะอำเภอ">เจ้าคณะอำเภอ</option>
+        <option value="รองเจ้าคณะอำเภอ">รองเจ้าคณะอำเภอ</option>
+        <option value="เจ้าคณะตำบล">เจ้าคณะตำบล</option>
+        <option value="รองเจ้าคณะตำบล">รองเจ้าคณะตำบล</option>
+        <option value="เจ้าอาวาส">เจ้าอาวาส</option>
+        <option value="รองเจ้าอาวาส">รองเจ้าอาวาส</option>
+        <option value="ผู้ช่วยเจ้าอาวาส">ผู้ช่วยเจ้าอาวาส</option>
+        <option value="ไม่มี">ไม่มี</option>
+      </select>
+      <br /><br />
+
+      <label for="phone-number">หมายเลขโทรศัพท์ที่ติดต่อได้ของสงฆ์ :</label>
+      <input
+        type="tel"
+        id="phone-number"
+        name="phone-number"
+        pattern="[0][0-9]{9}"
+        required
+      /><br /><br />
+
+      <label for="id-number">เลขประจำตัวประชาชน :</label>
+      <input
+        type="text"
+        id="id-number"
+        name="id-number"
+        pattern="[0-9]{13}"
+        maxlength="13"
+        required
+      /><br /><br />
+
+      <label for="sect">นิกาย :</label>
+      <input type="radio" id="sect1" name="sect" value="ธรรมยุติ" />
+      <label for="sect1">ธรรมยุติ</label>
+      <input type="radio" id="sect2" name="sect" value="มหายาน" required />
+      <label for="sect2">มหายาน</label><br /><br />
+
+      <label for="temple-name">ชื่อวัดที่สังกัดของพระสงฆ์ :</label>
+      <input
+        type="text"
+        id="temple-name"
+        name="temple-name"
+        required
+      /><br /><br />
+      <!-- <input type="submit" id="submit" value="Submit" /> -->
+      <button type="submit" id="submit">Submit</button>
+    </form>
   </body>
 </html>
