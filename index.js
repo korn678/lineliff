@@ -9,31 +9,29 @@ const body = document.getElementById('body');
 const btnSubmit = document.getElementById('submit');
 
 async function main() {
-  await liff.init({ liffId: '1656821779-oVQW95Rm' });
   liff.ready.then(() => {
     if (liff.getOS === 'ios') {
-      body.style.backgroundColor = '#000000';
+      body.style.backgroundColor = '#eeeeee';
     }
   });
+
+  await liff.init({ liffId: '1656821779-oVQW95Rm' });
 }
 main();
 
-async function Submit() {
-  const result = await liff
-    .sendMessages([
-      {
-        type: 'text',
-        text: 'ระบบกำลังดำเนินการ',
-      },
-    ])
+function sendMessage() {
+  liff
+    .sendMessages([{ type: 'text', text: 'ส่งแล้ว' }])
     .then(() => {
-      console.log('message sent');
+      liff.closeWindow();
     })
-    .catch((err) => {
-      console.log('error', err);
+    .catch((e) => {
+      window.alert("Message hasn't been sent");
     });
 }
 
+async function Submit() {}
+
 btnSubmit.onclick = () => {
-  Submit();
+  sendMessage();
 };
